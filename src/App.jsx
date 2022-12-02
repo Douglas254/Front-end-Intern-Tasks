@@ -1,9 +1,15 @@
 import "react-toastify/dist/ReactToastify.css";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import Form1 from "./pages/Form1";
 
 function App() {
   return (
     <>
-      <h1 className="bg-info text-center">Nexis Test</h1>
+      <BrowserRouter>
+        <Routes>
+          <Route path="/" element={<Form1/>} />
+        </Routes>
+      </BrowserRouter>
     </>
   );
 }

@@ -3,4 +3,149 @@
   margin: 0;
   padding: 0;
   font-family: "Inter", sans-serif;
+  overflow: hidden;
+}
+
+.banner__img {
+  width: 80%;
+}
+
+.logo img {
+  width: 174px;
+}
+
+.form__container {
+  margin: 20px;
+  height: 92vh;
+  box-shadow: 1px -10px 25px rgba(201, 201, 201, 0.25),
+    -1px 10px 25px rgba(147, 147, 147, 0.25);
+}
+
+input {
+  width: 90%;
+  border: none;
+  border-bottom: 1px solid #b4b4b4;
+}
+
+.signup__text {
+  font-style: normal;
+  font-weight: 600;
+}
+
+::placeholder {
+  color: #b4b4b4;
+}
+
+.signup__container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.signup__outercontainer {
+  display: flex;
+  align-items: center;
+}
+
+.signup__button {
+  margin-left: 80px;
+  width: 132px;
+  height: 49px;
+  cursor: pointer;
+  background: #1678cb;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  border-radius: 15px;
+  color: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 500;
+}
+
+.signup__button:hover {
+  background: #ffffff;
+  border: 1px solid #1678cb;
+  color: #1678cb;
+}
+
+.form__footer {
+  display: flex;
+  margin-top: 100px;
+  align-items: flex-end;
+  justify-content: end;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 15px;
+  color: #7e7e7e;
+}
+
+.form__footer__container {
+  display: flex;
+  align-items: flex-end;
+  justify-content: flex-end;
+  margin-left: 120px;
+}
+
+.login__here {
+  margin-left: 10px;
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 17px;
+  text-decoration: underline;
+  text-transform: uppercase;
+  color: #1678cb;
+}
+
+.login__here:hover {
+  color: #1678cb;
+}
+
+button {
+  border: none;
+  background-color: transparent;
+}
+
+@media (max-width: 512px) {
+  .logo img {
+    width: 104px;
+  }
+
+  .login__here a {
+    margin-left: 5px;
+    display: block;
+  }
+
+  .form__footer__container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-left: 10px;
+  }
+
+  .form__container {
+    margin: 2px;
+    height: 100vh;
+  }
+
+  .banner__img {
+    display: none;
+  }
+}
+
+@media (max-width: 889px) {
+  .logo img {
+    width: 134px;
+  }
+
+  .banner__img {
+    width: 100%;
+  }
+
+  .form__footer__container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-left: 10px;
+  }
 }
