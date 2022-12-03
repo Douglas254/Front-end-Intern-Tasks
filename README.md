@@ -1,4 +1,8 @@
-# Front End Developer Task
+# Front End Developer Task 👨‍💻
+
+## Video Preview 👀
+https://user-images.githubusercontent.com/51504850/205453593-a424315f-1aff-4e8d-8727-d0357e0f1f84.mp4
+
 ## Screenshots 📸
 
 ### Sign Up Form Step 1
