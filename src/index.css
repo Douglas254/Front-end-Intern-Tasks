@@ -3,7 +3,10 @@
   margin: 0;
   padding: 0;
   font-family: "Inter", sans-serif;
-  /* overflow-x: hidden; */
+}
+
+body {
+  overflow-x: hidden;
 }
 
 .banner__img {
@@ -175,8 +178,7 @@ th {
   min-height: 80vh;
 }
 
-.error__server{
-  
+.error__server {
   color: red;
 }
 
@@ -201,9 +203,9 @@ th {
   }
 }
 
-@media (max-width: 512px) {
+@media (max-width: 768px) {
   .logo img {
-    width: 104px;
+    width: 144px;
   }
 
   .login__here a {
@@ -223,13 +225,13 @@ th {
     height: 100vh;
   }
 
-  .banner__img {
-    display: none;
-  }
-
   .attendance__title {
     width: 350px;
     font-size: 21px;
     height: 62px;
+  }
+
+  .form__container {
+    height: 68vh;
   }
 }
