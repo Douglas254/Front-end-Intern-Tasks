@@ -4,6 +4,7 @@ import axios from "axios";
 import { Link } from "react-router-dom";
 import { toast } from "react-toastify";
 import { useNavigate } from "react-router-dom";
+import {BsArrowRight } from "react-icons/bs";
 
 // our api
 const api = "https://test.nexisltd.com/signup";
@@ -17,7 +18,7 @@ const initialState = {
   password: "",
 };
 
-const Form1 = () => {
+const Signup = () => {
   const [currentStep, setCurrentStep] = useState("stepOne");
   const [inputs, setInputs] = useState(initialState);
   const navigate = useNavigate();
@@ -78,11 +79,14 @@ const Form1 = () => {
                     </div>
                     <div className="">
                       <span className="signup__container pt-5">
-                        <div className="signup__button">
-                          <button onClick={() => setCurrentStep("stepTwo")}>
-                            Next Step <span>-- </span>
-                          </button>
+                          <button className="next__step" onClick={() => setCurrentStep("stepTwo")}>
+                        <div className="signup__button1">
+                            Next Step
+                            <span className="ms-2">
+                              <BsArrowRight size={20} />
+                            </span>
                         </div>
+                          </button>
                       </span>
                     </div>
 
@@ -127,11 +131,14 @@ const Form1 = () => {
                         <button onClick={() => setCurrentStep("stepOne")}>
                           Back
                         </button>
+                          <button className="next__step" onClick={() => setCurrentStep("stepThree")}>
                         <div className="signup__button">
-                          <button onClick={() => setCurrentStep("stepThree")}>
-                            Next Step <span>-- </span>
-                          </button>
+                            Next Step
+                            <span className="ms-2">
+                              <BsArrowRight size={20} />
+                            </span>
                         </div>
+                          </button>
                       </span>
                     </div>
                   </div>
@@ -173,4 +180,4 @@ const Form1 = () => {
   );
 };
 
-export default Form1;
+export default Signup;
