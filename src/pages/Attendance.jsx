@@ -2,17 +2,27 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import logo from "../assets/logo.png";
 import Table from "react-bootstrap/Table";
+import { useNavigate } from "react-router-dom";
 
 const api = "https://test.nexisltd.com/test ";
-const { access_token } = JSON.parse(localStorage.getItem("token"));
-
-const config = {
-  headers: { Authorization: `Bearer ${access_token}` },
-};
 
 const Attendance = () => {
   const [data, setData] = useState([]);
+  const navigate = useNavigate();
 
+  // redirect to login for the first visit to site 
+  if (JSON.parse(localStorage.getItem("token")) === null) {
+    navigate("/login");
+  }
+
+  const { access_token } = JSON.parse(localStorage.getItem("token"));
+
+  {
+  }
+
+  const config = {
+    headers: { Authorization: `Bearer ${access_token}` },
+  };
   useEffect(() => {
     axios
       .get(api, config)
@@ -27,16 +37,18 @@ const Attendance = () => {
   const dat = Object.keys(data);
 
   const rowList = dat.map((list) => {
-    // get date according index 
+    // get date according index
     const date = Object.keys(data[list].attendance)[25];
 
-    // split the attendance name to two 
-    const [first, last] = (data[list].name).split(' ')
+    // split the attendance name to two
+    const [first, last] = data[list].name.split(" ");
 
     return (
       <tr>
         <td>{date}</td>
-        <td>{first} {last}</td>
+        <td>
+          {first} {last}
+        </td>
         <td>{data[list].attendance[date].status}</td>
       </tr>
     );
