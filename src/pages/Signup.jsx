@@ -4,7 +4,7 @@ import axios from "axios";
 import { Link } from "react-router-dom";
 import { toast } from "react-toastify";
 import { useNavigate } from "react-router-dom";
-import {BsArrowRight } from "react-icons/bs";
+import { BsArrowRight } from "react-icons/bs";
 
 // our api
 const api = "https://test.nexisltd.com/signup";
@@ -37,9 +37,14 @@ const Signup = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     console.log(inputs);
-    axios.post(api, inputs);
-    toast.success("Sign Up Successful");
-    navigate("/login");
+
+    if (!first_name || !last_name || !phone_number || !email || !password) {
+      toast.error("please fill all input fields");
+    } else {
+      axios.post(api, inputs);
+      toast.success("Sign Up Successful");
+      navigate("/login");
+    }
   };
 
   return (
@@ -79,14 +84,17 @@ const Signup = () => {
                     </div>
                     <div className="">
                       <span className="signup__container pt-5">
-                          <button className="next__step" onClick={() => setCurrentStep("stepTwo")}>
-                        <div className="signup__button1">
+                        <button
+                          className="next__step"
+                          onClick={() => setCurrentStep("stepTwo")}
+                        >
+                          <div className="signup__button1">
                             Next Step
                             <span className="ms-2">
-                              <BsArrowRight size={20} />
+                              <BsArrowRight size={23} />
                             </span>
-                        </div>
-                          </button>
+                          </div>
+                        </button>
                       </span>
                     </div>
 
@@ -111,7 +119,8 @@ const Signup = () => {
                         placeholder="+254 7XXXXXXXXX"
                         value={phone_number}
                         onChange={handleChange}
-                        className="w-75 me-2"
+                        min="10"
+                        max="15"
                       />
                     </div>
                     <div className="pt-5">
@@ -122,23 +131,28 @@ const Signup = () => {
                         placeholder="Write Email Address"
                         value={email}
                         onChange={handleChange}
-                        className="w-100 me-2"
                       />
                     </div>
 
                     <div className="">
                       <span className="signup__container pt-5">
-                        <button onClick={() => setCurrentStep("stepOne")}>
+                        <button
+                          className="back__btn"
+                          onClick={() => setCurrentStep("stepOne")}
+                        >
                           Back
                         </button>
-                          <button className="next__step" onClick={() => setCurrentStep("stepThree")}>
-                        <div className="signup__button">
+                        <button
+                          className="next__step"
+                          onClick={() => setCurrentStep("stepThree")}
+                        >
+                          <div className="signup__button">
                             Next Step
                             <span className="ms-2">
-                              <BsArrowRight size={20} />
+                              <BsArrowRight size={23} />
                             </span>
-                        </div>
-                          </button>
+                          </div>
+                        </button>
                       </span>
                     </div>
                   </div>
@@ -148,20 +162,24 @@ const Signup = () => {
                   <div className="stepThree">
                     <div className="pt-5">
                       <input
-                        type="text"
+                        type="password"
                         name="password"
                         id="password"
                         placeholder="Write Password"
                         value={password}
                         onChange={handleChange}
+                        minlength="8"
                       />
-                      <div className="fs-6">
-                        your password must be 8 characters
+                      <div className="hintpassword">
+                        your password must be 8 character
                       </div>
                     </div>
-                    <div className="">
+                    <div>
                       <span className="signup__container pt-5">
-                        <button onClick={() => setCurrentStep("stepTwo")}>
+                        <button
+                          className="back__btn"
+                          onClick={() => setCurrentStep("stepTwo")}
+                        >
                           Back
                         </button>
                         <button type="submit" className="signup__button">

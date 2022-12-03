@@ -3,6 +3,7 @@ import { FormBanner } from "../components";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
+import { Link } from "react-router-dom";
 
 // our api
 const api = "https://test.nexisltd.com/login";
@@ -33,16 +34,20 @@ const Login = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     console.log(inputs);
-    axios
-      .post(api, inputs)
-      .then((res) => {
-        localStorage.setItem("token", JSON.stringify(res.data));
-        toast.success("Login Successful");
-        navigate("/attendance");
-      })
-      .catch((err) => console.log(err));
-  };
 
+    if (!email || !password) {
+      toast.error("please fill all input fields");
+    } else {
+      axios
+        .post(api, inputs)
+        .then((res) => {
+          localStorage.setItem("token", JSON.stringify(res.data));
+          toast.success("Login Successful");
+          navigate("/attendance");
+        })
+        .catch((err) => console.log(err));
+    }
+  };
   return (
     <>
       <div className="row">
@@ -54,7 +59,7 @@ const Login = () => {
             <form onSubmit={handleSubmit}>
               <div className="p-5">
                 <div className="row">
-                  <h3 className="text-center signup__text">Login Form</h3>
+                  <h3 className="text-center signup__text">Log in Form</h3>
                 </div>
 
                 {currentStep === "login" && (
@@ -71,23 +76,33 @@ const Login = () => {
                     </div>
                     <div className="pt-5">
                       <input
-                        type="text"
+                        type="password"
                         name="password"
                         id="password"
                         placeholder="Write Password"
                         value={password}
                         onChange={handleChange}
+                        minlength="8"
                       />
-                      <div className="fs-6">
+                      <div className="hintpassword">
                         your password must be 8 characters
                       </div>
                     </div>
                     <div className="">
                       <span className="signup__container pt-5">
-                        <button type="submit" className="signup__button">
-                          Login
+                        <button type="submit" className="signup__button1">
+                          Log In
                         </button>
                       </span>
+                    </div>
+
+                    <div className="form__footer">
+                      <div className="form__footer__container">
+                        <span>Don't have an account?</span>
+                        <span className="login__here">
+                          <Link to="/">Signup here!</Link>
+                        </span>
+                      </div>
                     </div>
                   </div>
                 )}
