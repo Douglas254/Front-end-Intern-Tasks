@@ -17,6 +17,8 @@ const initialState = {
 const Login = () => {
   const [currentStep, setCurrentStep] = useState("login");
   const [inputs, setInputs] = useState(initialState);
+  const [error, setError] = useState(null);
+
 
   const navigate = useNavigate();
 
@@ -45,9 +47,11 @@ const Login = () => {
           toast.success("Login Successful");
           navigate("/attendance");
         })
-        .catch((err) => console.log(err));
+        .catch((err) => setError(err.response.data.error))
     }
   };
+
+  console.log(error);
   return (
     <>
       <div className="row">
@@ -88,6 +92,7 @@ const Login = () => {
                         your password must be 8 characters
                       </div>
                     </div>
+                    <div className="pt-3"> {error && <p className="error__server">{error}</p>}</div>
                     <div className="">
                       <span className="signup__container pt-5">
                         <button type="submit" className="signup__button1">

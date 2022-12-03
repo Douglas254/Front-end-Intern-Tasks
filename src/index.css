@@ -175,6 +175,11 @@ th {
   min-height: 80vh;
 }
 
+.error__server{
+  
+  color: red;
+}
+
 @media (max-width: 889px) {
   .logo img {
     width: 134px;
