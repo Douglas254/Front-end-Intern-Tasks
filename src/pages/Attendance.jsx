@@ -3,7 +3,6 @@ import axios from "axios";
 import logo from "../assets/logo.png";
 import Table from "react-bootstrap/Table";
 
-
 const api = "https://test.nexisltd.com/test ";
 const { access_token } = JSON.parse(localStorage.getItem("token"));
 
@@ -22,14 +21,29 @@ const Attendance = () => {
   }, []);
 
   console.log(data);
-  console.log(config);
+  // console.log(config);
 
-  const dat = Object.values(data).forEach((val) => console.log(val));
-// console.log(dat);
+  // get key values of the object
+  const dat = Object.keys(data);
+
+  const rowList = dat.map((list) => {
+    // get date according index 
+    const date = Object.keys(data[list].attendance)[25];
+
+    // split the attendance name to two 
+    const [first, last] = (data[list].name).split(' ')
+
+    return (
+      <tr>
+        <td>{date}</td>
+        <td>{first} {last}</td>
+        <td>{data[list].attendance[date].status}</td>
+      </tr>
+    );
+  });
   return (
     <>
       <div className="container-fluid">
-        {" "}
         <div>
           <div className="logo pt-5">
             <img src={logo} alt="logo" />
@@ -47,13 +61,7 @@ const Attendance = () => {
                 <th>Status</th>
               </tr>
             </thead>
-            <tbody>
-              <tr>
-                <td>3/12/22</td>
-                <td>Douglas Obara</td>
-                <td>Present</td>
-              </tr>
-            </tbody>
+            <tbody>{rowList}</tbody>
           </Table>
         </div>
       </div>
