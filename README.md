@@ -27,6 +27,11 @@ https://user-images.githubusercontent.com/51504850/205453593-a424315f-1aff-4e8d-
   <a href="https://front-end-intern-tasks.vercel.app/"> 
    <img src="src/assets/Step5.png" alt="step 5 form screenshot"><a>
 
+
+### Error Page
+  <a href="https://front-end-intern-tasks.vercel.app/"> 
+   <img src="src/assets/errorpage.png" alt="errorpage screenshot"><a>
+
 ## Setup ✴️
 
 - [x] Clone the repository using `https://github.com/Douglas254/Front-end-Intern-Tasks.git` or download and extract the zip file.
